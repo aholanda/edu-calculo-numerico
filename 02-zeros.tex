@@ -3,4 +3,37 @@
 
 \section{Método da bissecção}
 
-\lstinputlisting[lastline=21]{numcalc/zeros/bisect.py}
+\paragraph{Algoritmo B.} O algoritmo a seguir calcula 
+a raiz de uma função $f(x)$ entre os pontos $x_1$ e $x_2$ 
+desde que $f(x_1)f(x_2)<0$ com uma acurácia $x_{ac}$
+para um número $N$ de iterações.
+
+\begin{enumerate}[1]
+	\item[B1] [Inicializar.] Atribuir $i \leftarrow 1$.
+	\item[B2] [Achar o ponto médio.] Atribuir $i\leftarrow i+1$ e
+		   calcular $x_m = (x_1+x_2)/2$.
+	\item[B3] [Checar os critérios de parada.] Se $f(x_m)=0$ 
+		(a raiz foi encontrada)
+		ou \hbox{$(x_2-x_1)/2 < x_{ac}$} (uma aproximação da 
+		raiz é suficiente), ir para B8.
+	\item[B4] [Checar o número de iterações.] Se $i > N$, 
+		ir para B9.
+	\item[B5] [Deslocar um dos limites para o ponto médio.] 
+		Se $f(x_1)f(x_m)>0$ ir para B6, caso contrário 
+		ir para B7.
+	\item[B6] [Deslocar o ponto médio para $x_1$.] Atribuir
+		$x_1\leftarrow x_m$. Voltar para o passo B2.
+	\item[B7] [Deslocar o ponto médio para $x_2$.] Atribuir
+		$x_2\leftarrow x_m$. Voltar para o passo B2.
+	\item[B8] [A raiz de $f(x)$ foi encontrada] $r \leftarrow x_m$.
+	\item[B9] [A raiz de $f(x)$ não foi encontrada.]
+\end{enumerate}
+
+A Listagem~\ref{lst:bisect} mostra uma possível implementação 
+do Algoritmo~B usando Python3.
+
+\lstinputlisting[
+	lastline=21,%
+	label={lst:bisect},%
+	caption={Implementação do Algoritmo B (método da bissecção).}
+]{numcalc/zeros/bisect.py}
