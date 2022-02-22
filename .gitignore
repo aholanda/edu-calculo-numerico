@@ -1,5 +1,7 @@
 # LaTeX
 *.aux
+*.bbl
+*.blg
 *.log
 *.out
 numcalc.pdf
