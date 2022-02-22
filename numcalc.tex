@@ -1,10 +1,25 @@
 \documentclass{article}
 
 \usepackage{fontspec}
+\usepackage[
+	colorlinks=true,%
+	anchorcolor=blue,%
+	citecolor=blue,%
+	linkcolor=blue,%
+	urlcolor=blue%
+]{hyperref}
 \usepackage{polyglossia}
 \setdefaultlanguage{brazil}
 \usepackage{listings}
-\lstset{language=C}
+\lstset{
+	language=C,%
+	numbers=left,%
+	numberstyle={\color{gray}\scriptsize},%
+	numbersep=5pt,%
+	showspaces=false
+}
+\usepackage{xcolor}
+
 \def\pfbox
   {\hbox{\hskip 3pt\lower2pt\vbox{\hrule
   \hbox to 5pt{\vrule height 7pt\hfill\vrule}
@@ -35,11 +50,12 @@ pontos $x1$ e $x2$ se $f(x1)f(x2)<0$
 O algoritmo a seguir usa o método da bissecção para 
 localizar o zero de uma função $f(x)$ 
 entre os pontos $x_1$ e $x_2$ desde que $f(x_1)f(x_2)<0$ 
-com uma acurácia $x_{ac}$ para $MAXIT$ iterações.
+com uma acurácia $x_{ac}$ para um número máximo 
+de iterações definido por {\tt MAXIT}.
 
 \begin{itemize}
 \item[\bf B1] [Inicializar.] Atribuir $i \leftarrow 1$.
-\item[\bf B2] [Checar número de iterações.] Se $i>N$, 
+\item[\bf B2] [Checar número de iterações.] Se $i>${\tt MAXIT}, 
 		ir para B9.
 
 \item[\bf B3] [Achar o ponto médio.] Calcular $x_m = (x_1+x_2)/2$.
@@ -75,7 +91,7 @@ do Algoritmo~B.
 	firstline=4,%
 	lastline=25,%
 	label={lst:zerobis}%
-]{src/zero.c}
+]{src/zerobis.c}
 
 \bibliography{refs}
 \bibliographystyle{plain}
