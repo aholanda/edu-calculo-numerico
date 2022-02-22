@@ -3,36 +3,11 @@
 \usepackage{polyglossia}
 \setdefaultlanguage{brazil}
 \usepackage{listings}
-\lstset{language=Python}
-\usepackage{xcolor}
+\lstset{language=C}
 
-\definecolor{codegreen}{rgb}{0,0.6,0}
-\definecolor{codeblue}{rgb}{0.3,0.3,0.8}
-\definecolor{codegray}{rgb}{0.5,0.5,0.5}
-\definecolor{codepurple}{rgb}{0.58,0,0.82}
-\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
-
-\lstdefinestyle{numcalcsty}{
-    backgroundcolor=\color{backcolour},   
-    commentstyle=\color{codegreen},
-    keywordstyle=\color{codeblue},
-    numberstyle=\tiny\color{codegray},
-    stringstyle=\color{codepurple},
-    basicstyle=\ttfamily\footnotesize,
-    breakatwhitespace=false,         
-    breaklines=true,                 
-    captionpos=b,                    
-    keepspaces=true,                 
-    numbers=left,                    
-    numbersep=5pt,                  
-    showspaces=false,                
-    showstringspaces=false,
-    showtabs=false,                  
-    tabsize=2
-}
-
-\lstset{style=numcalcsty}
-
-\def\exercises{\noindent Exercícios.\setcounter{exnum}{0}}
-\def\exercise{\noindent\addtocounter{exnum}{1}\arabic{exnum}}
+\def\meno{\medskip\noindent}
+\def\pfbox
+  {\hbox{\hskip 3pt\lower2pt\vbox{\hrule
+  \hbox to 5pt{\vrule height 7pt\hfill\vrule}
+  \hrule}}\hskip3pt}
 

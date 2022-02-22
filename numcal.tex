@@ -1,0 +1,67 @@
+\documentclass{article}
+
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setdefaultlanguage{brazil}
+\usepackage{listings}
+\lstset{language=C}
+\def\pfbox
+  {\hbox{\hskip 3pt\lower2pt\vbox{\hrule
+  \hbox to 5pt{\vrule height 7pt\hfill\vrule}
+  \hrule}}\hskip3pt}
+
+\begin{document}
+\title{Noções de Cálculo Numérico}
+\author{Adriano J. Holanda}
+\date{2022-02-22}
+
+\section*{Localização de Zeros de Funções}
+
+
+\subsection*{Método da bissecção}
+
+{\bf Algoritmo B.}
+O algoritmo a seguir calcula a raiz de uma função $f(x)$ 
+entre os pontos $x_1$ e $x_2$ desde que $f(x_1)f(x_2)<0$ 
+com uma acurácia $x_{ac}$ para um número $N$ de iterações.
+
+\begin{itemize}
+\item[\bf B1] [Inicializar.] Atribuir $i \leftarrow 1$.
+\item[\bf B2] [Checar número de iterações.] Se $i>N$, 
+		ir para B9.
+
+\item[\bf B3] [Achar o ponto médio.] Calcular $x_m = (x_1+x_2)/2$.
+
+\item[\bf B4] [Checar os critérios de parada.] Se $f(x_m)=0$
+	(a raiz foi encontrada)
+	ou \hbox{$(x_2-x_1)/2 < x_{ac}$} (uma aproximação da
+	raiz é suficiente), ir para B9.
+
+\item[\bf B5] [Deslocar um dos limites para o ponto médio.]
+	Se $f(x_1)f(x_m)>0$ ir para B6, caso contrário 
+	ir para B7.
+
+\item[\bf B6] [Deslocar o ponto médio para $x_1$.] Atribuir
+	$x_1\leftarrow x_m$. Ir para o passo B8.
+
+\item[\bf B7] [Deslocar o ponto médio para $x_2$.] Atribuir
+	$x_2\leftarrow x_m$.
+
+\item[\bf B8] [Avançar.] Incrementar $i$ em $1$ unidade e
+	retornar para B2.
+
+\item[\bf B9] [Término do algoritmo.] Se $i\leq N$, o algoritmo
+	terminou com sucesso. Caso contrário, terminou 
+	sem sucesso.\quad\pfbox
+\end{itemize}
+
+\paragraph{Programa B.} A seguir mostra uma possível implementação 
+do Algoritmo~B.
+
+\lstinputlisting[
+	lastline=21,%
+	label={lst:bisect},%
+	caption={Implementação do Algoritmo B (método da bissecção).}
+]{src/bisect.c}
+
+\end{document}
