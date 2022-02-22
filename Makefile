@@ -1,4 +1,4 @@
-PROJ := numcal
+PROJ := numcalc
 
 default: $(PROJ).pdf
 
