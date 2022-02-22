@@ -17,13 +17,24 @@
 
 \section*{Localização de Zeros de Funções}
 
+O problema da localização de zeros (raízes) 
+de funções contínuas ocorre frequentemente 
+em ciência e engenharia~\cite{hamming}.
+Iremos mostrar alguns métodos simples 
+e fáceis de entender.
 
 \subsection*{Método da bissecção}
 
-{\bf Algoritmo B.}
-O algoritmo a seguir calcula a raiz de uma função $f(x)$ 
+O método da bissecção usa o fato do zero de uma 
+função contínua $f(x)$ se localizar entre dois 
+pontos $x1$ e $x2$ se $f(x1)f(x2)<0$ 
+({\it teorema do valor intermediário\/})~\cite{numrec}.
+
+\paragraph{Algoritmo B.}
+O algoritmo a seguir usa o método da bissecção para 
+localizar o zero de uma função $f(x)$ 
 entre os pontos $x_1$ e $x_2$ desde que $f(x_1)f(x_2)<0$ 
-com uma acurácia $x_{ac}$ para um número $N$ de iterações.
+com uma acurácia $x_{ac}$ para $MAXIT$ iterações.
 
 \begin{itemize}
 \item[\bf B1] [Inicializar.] Atribuir $i \leftarrow 1$.
@@ -62,7 +73,10 @@ do Algoritmo~B.
 \lstinputlisting[
 	firstline=4,%
 	lastline=25,%
-	label={lst:bisect}%
-]{src/bisect.c}
+	label={lst:zerobis}%
+]{src/zero.c}
+
+\bibliography{refs}
+\bibliographystyle{plain}
 
 \end{document}
