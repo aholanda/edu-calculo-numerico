@@ -3,7 +3,7 @@ import math
 N = 40
 def rtbis(f, x1, x2, xac):
     if f(x1)*f(x2) >= 0.0:
-        raise ValueError('Root must be bracketed for bisection.')
+        raise ValueError('f(x1)f(x2)>=0 = False')
     for i in range(N):
         xm = (x1+x2)/2
         y = f(xm)
@@ -14,7 +14,7 @@ def rtbis(f, x1, x2, xac):
         else:
             x2 = xm
 
-    raise ValueError('Too many bisections.')
+    raise ValueError('Limit of {} iterations exceeded.'.format(N))
 
 def f(x):
     return math.exp(x) - x -2
