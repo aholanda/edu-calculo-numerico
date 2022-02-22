@@ -20,7 +20,7 @@ float zerobis(float f(float x), float x1, float x2, float xac) {
             		x2 = xm;
     }
     printf("Limit of %d iterations exceeded.\n", MAXIT);
-    exit(-1);
+    exit(-2);
 }
 
 float f(float x) {
