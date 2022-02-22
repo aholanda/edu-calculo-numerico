@@ -7,9 +7,6 @@ trash += *.o $(BIN)
 
 VPATH = src
 
-a:
-	echo $(BIN)
-
 %: %.c
 	$(CC) $(CFLAGS) $< -o $@ $(LDFLAGS)
 
