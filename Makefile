@@ -1,9 +1,13 @@
-default: main.pdf
+PROJ := numcal
 
-main.pdf: main.tex 02-zeros.tex macros.tex
+default: $(PROJ).pdf
+
+$(PROJ).pdf: $(PROJ).tex
 	xelatex $< && xelatex $<
 
+$(PROJ).tex: src
+
 clean:
-	$(RM) main.aux main.log main.out main.pdf
+	$(RM) *.aux *.log *.out $(PROJ).pdf
 
 .PHONY: clean
