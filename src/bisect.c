@@ -27,7 +27,7 @@ float f(float x) {
     return expf(x) - x -2;
 }
 
-int main(char **argv, int argc) {
+int main(int argc, char**argv) {
     float r = rtbis(f, -2, 0, 0.01);
     printf("f(%f)~=0\n", r);
 }
