@@ -8,6 +8,8 @@ $(PROJ).pdf: $(PROJ).tex
 $(PROJ).tex: src
 
 clean:
-	$(RM) *.aux *.log *.out $(PROJ).pdf
+	$(RM) *.aux *.log *.out $(PROJ).pdf $(trash)
 
 .PHONY: clean
+
+include code.mk
