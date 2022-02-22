@@ -1,2 +1,5 @@
-# calculo-numerico
-Material didático introdutório para uma disciplina de "Cálculo Numérico".
+# Cálculo (Métodos) Numéricos
+Material didático introdutório contendo alguns métodos numéricos.
+
+---
+[Adriano J. Holanda](https://ajholanda.github.io)
