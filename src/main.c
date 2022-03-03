@@ -2,10 +2,10 @@
 #include <stdio.h>
 #include "numcalc.h"
 float f(float x) {
-    return expf(x) - x -2;
+    return expf(x) - 2*x -5;
 }
 
 int main(int argc, char**argv) {
-    float r = zerobis(f, -2, 0, 0.01);
+    float r = zerobis(f, 0.0, 4.0, 0.0001);
     printf("f(%f)~=0\n", r);
 }

@@ -1,4 +1,4 @@
-CFLAGS := -Wall -g
+CFLAGS := -Wall -g -pedantic -ansi -std=c99
 LDFLAGS := -lm
 
 SRC := zerobis.c
