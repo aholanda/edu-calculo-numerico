@@ -1,6 +1,8 @@
 \documentclass{article}
 
+\usepackage{enumerate}
 \usepackage{fontspec}
+\usepackage{graphicx}
 \usepackage[
 	colorlinks=true,%
 	anchorcolor=blue,%
@@ -58,11 +60,11 @@ de iterações definido por {\tt MAXIT}.
 \item[\bf B2] [Checar número de iterações.] Se $i>${\tt MAXIT}, 
 		ir para B9.
 
-\item[\bf B3] [Achar o ponto médio.] Calcular $x_m = (x_1+x_2)/2$.
+	\item[\bf B3] [Achar o ponto médio.] Calcular $x_m = \frac{x_1+x_2}{2}$.
 
 \item[\bf B4] [Checar os critérios de parada.] Se $f(x_m)=0$
 	(a raiz foi encontrada)
-	ou \hbox{$(x_2-x_1)/2 < x_{ac}$} (uma aproximação da
+		ou \hbox{$|\frac{(x_2-x_1)}{2}| < x_{ac}$} (uma aproximação da
 	raiz é suficiente), ir para B9.
 
 \item[\bf B5] [Deslocar um dos limites para o ponto médio.]
@@ -93,7 +95,76 @@ do Algoritmo~B.
 	label={lst:zerobis}%
 ]{src/zerobis.c}
 
+\subsection*{Método da posição falsa}
+
+\paragraph{Algoritmo F.}
+O algoritmo a seguir usa o método da posição falsa 
+({\it regula falsi\/}) para 
+localizar o zero de uma função $f(x)$ 
+entre os pontos $x_1$ e $x_2$ desde que $f(x_1)f(x_2)<0$ 
+com uma acurácia $x_{ac}$ para um número máximo 
+de iterações definido por {\tt MAXIT}.
+
+\begin{itemize}
+\item[\bf B1] [Inicializar.] Atribuir $i \leftarrow 1$.
+\item[\bf B2] [Checar número de iterações.] Se $i>${\tt MAXIT}, 
+		ir para B9.
+
+\item[\bf B3] [Achar a secante da reta que passa por $x_1$ e $x_2$.] 
+	Calcular \\\hbox{$x_s = x_1+ f(x_1)\frac{x_2-x_1}{f(x_2)-f(x_1)}$}.
+
+\item[\bf B4] [Checar os critérios de parada.] Se $f(x_m)=0$
+	(a raiz foi encontrada)
+	ou \hbox{$|x_2-x_1| < x_{ac}$} (uma aproximação da
+	raiz é suficiente), ir para B9.
+
+\item[\bf B5] [Deslocar um dos limites para a secante.]
+	Se $f(x_s)<0$ ir para B6, caso contrário 
+	ir para B7.
+
+\item[\bf B6] [Deslocar $x_1$ para a secante.] Atribuir
+	$x_1\leftarrow x_s$. Ir para o passo B8.
+
+\item[\bf B7] [Deslocar $x_2$ para a secante.] Atribuir
+	$x_2\leftarrow x_s$.
+
+\item[\bf B8] [Avançar.] Incrementar $i$ em $1$ unidade e
+	retornar para B2.
+
+\item[\bf B9] [Término do algoritmo.] Se $i\leq N$, o algoritmo
+	terminou com sucesso. Caso contrário, terminou 
+	sem sucesso.\quad\pfbox
+\end{itemize}
+
+\begin{figure}
+	\input zerofal0
+	\caption{Aplicação do método da posição falsa para a função $f(x)= \frac{x}{2} ln(x) -1$.}%
+\label{pic:latex}%
+\end{figure}
+
+\subsection*{Exercícios}
+
+
+\paragraph{1.} Mudar o valor da acurácia (variável {\tt xac}) de $x$ para $0,1$ e
+descrever o que ocorre com o valor da raiz estimada para todos 
+os algoritmos. Modifique o valor de {\tt xac} e repita o procedimento.
+
+\paragraph{2.} Para as funções e intervalos a seguir, implemente a localização da raiz
+usando os métodos estudados:
+
+\begin{enumerate}[a)]
+	\begin{minipage}{0.5\textwidth}
+	\item $exp(x) -2x -5\qquad 1\leq x\leq 3$;
+	\item $cos(x)-x\qquad 0\leq x\leq\frac{\pi}{2}$; 
+	\item $x^3-5\qquad 1\leq x \leq 2,5$;
+	\end{minipage}
+	\begin{minipage}{0.5\textwidth}
+	\item $xln(x)-x-1\qquad 2\leq x\leq 5 $;
+	\item $xtan(x)-\frac{1}{x^3}\qquad 2\leq x\leq 4$;
+	\item $x^2-7\qquad 1,5\leq x\leq 4$.
+	\end{minipage}
+\end{enumerate}
+
 \bibliography{refs}
 \bibliographystyle{plain}
-
 \end{document}
