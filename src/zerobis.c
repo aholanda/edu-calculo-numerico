@@ -22,12 +22,3 @@ float zerobis(float f(float x), float x1, float x2, float xac) {
     printf("Limit of %d iterations exceeded.\n", MAXIT);
     exit(-2);
 }
-
-float f(float x) {
-    return expf(x) - x -2;
-}
-
-int main(int argc, char**argv) {
-    float r = zerobis(f, -2, 0, 0.01);
-    printf("f(%f)~=0\n", r);
-}
