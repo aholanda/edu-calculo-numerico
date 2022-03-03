@@ -5,3 +5,7 @@
 *.log
 *.out
 numcalc.pdf
+
+# C
+*.o
+numcalc
