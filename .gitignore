@@ -9,3 +9,7 @@ numcalc.pdf
 # C
 *.o
 numcalc
+
+# Gnuplot
+zerofal*.eps
+zerofal*.tex
