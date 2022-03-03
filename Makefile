@@ -10,9 +10,10 @@ $(PROJ).aux: $(PROJ).tex
 
 $(PROJ).tex: src
 
-clean:
+tidy:
 	$(RM) *.aux *.bbl *.blg *.log *.out $(PROJ).pdf $(trash)
 
-.PHONY: clean
+.PHONY: tidy
 
-include code.mk
+include src/Makefile
+
