@@ -18,9 +18,3 @@ tidy:
 
 # Code
 include src/Makefile
-
-# Plottings
-PLOTS := zerofal0.tex zerofal1.tex
-$(PLOTS): zero.gnuplot
-	gnuplot $<
-trash += $(PLOTS)
