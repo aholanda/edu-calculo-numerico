@@ -45,37 +45,37 @@ e fáceis de entender.
 
 O método da bissecção usa o fato do zero de uma 
 função contínua $f(x)$ se localizar entre dois 
-pontos $x1$ e $x2$ se $f(x1)f(x2)<0$ 
+pontos $a$ e $b$ se $f(a)f(b)<0$ 
 ({\it teorema do valor intermediário\/})~\cite{numrec}.
 
 \paragraph{Algoritmo B.}
 O algoritmo a seguir usa o método da bissecção para 
 localizar o zero de uma função $f(x)$ 
-entre os pontos $x_1$ e $x_2$ desde que $f(x_1)f(x_2)<0$ 
-com uma acurácia $x_{ac}$ para um número máximo 
-de iterações definido por {\tt MAXIT}.
+entre os pontos $a$ e $b$ desde que $f(a)f(b)<0$ 
+com uma acurácia $\epsilon$ e um número máximo 
+de iterações {\tt N}.
 
 \begin{itemize}
 \item[\bf B1] [Inicializar.] Atribuir $i \leftarrow 1$.
-\item[\bf B2] [Checar número de iterações.] Se $i>${\tt MAXIT}, 
+\item[\bf B2] [Checar número de iterações.] Se $i>${\tt N}, 
 		ir para B9.
 
-	\item[\bf B3] [Achar o ponto médio.] Calcular $x_m = \frac{x_1+x_2}{2}$.
+	\item[\bf B3] [Achar o ponto médio.] Calcular $m = \frac{a+b}{2}$.
 
-\item[\bf B4] [Checar os critérios de parada.] Se $f(x_m)=0$
+\item[\bf B4] [Checar os critérios de parada.] Se $f(m)=0$
 	(a raiz foi encontrada)
-		ou \hbox{$|\frac{(x_2-x_1)}{2}| < x_{ac}$} (uma aproximação da
+		ou \hbox{$|\frac{(b-a)}{2}| < \epsilon$} (uma aproximação da
 	raiz é suficiente), ir para B9.
 
 \item[\bf B5] [Deslocar um dos limites para o ponto médio.]
-	Se $f(x_1)f(x_m)>0$ ir para B6, caso contrário 
+	Se $f(a)f(m)>0$ ir para B6, caso contrário 
 	ir para B7.
 
-\item[\bf B6] [Deslocar o ponto médio para $x_1$.] Atribuir
-	$x_1\leftarrow x_m$. Ir para o passo B8.
+\item[\bf B6] [Deslocar o ponto médio para $a$.] Atribuir
+	$a\leftarrow m$. Ir para o passo B8.
 
-\item[\bf B7] [Deslocar o ponto médio para $x_2$.] Atribuir
-	$x_2\leftarrow x_m$.
+\item[\bf B7] [Deslocar o ponto médio para $b$.] Atribuir
+	$b\leftarrow m$.
 
 \item[\bf B8] [Avançar.] Incrementar $i$ em $1$ unidade e
 	retornar para B2.
@@ -92,62 +92,84 @@ do Algoritmo~B.
 \lstinputlisting[
 	firstline=4,%
 	lastline=25,%
-	label={lst:zerobis}%
-]{src/zerobis.c}
+	label={lst:bisection}%
+]{src/bisection.c}
 
 \subsection*{Método da posição falsa}
 
-\paragraph{Algoritmo F.}
+No método da posição falsa ({\it regula falsi\/}), 
+são tomados dois pontos $\{a,b\}$ em $x$ que satisfaçam 
+a condição $f(a)f(b)<0 \land f(a)<f(b)$, traçando 
+uma reta entre estes dois pontos e aproximando a 
+secante até a raiz de $f(x)$. A reta entre $a$ 
+e $b$ é dada por
+
+\begin{equation}
+	\ell(x) = f(a) + \frac{f(b)-f(a)}{b-a}(x-a),
+\end{equation}
+
+\noindent cujo zero é dado por
+
+\begin{equation}
+	\ell(x) = a + f(a)\frac{b-a}{f(b)-f(a)}.
+\end{equation}
+
+\paragraph{Algoritmo R.}
 O algoritmo a seguir usa o método da posição falsa 
 ({\it regula falsi\/}) para 
 localizar o zero de uma função $f(x)$ 
-entre os pontos $x_1$ e $x_2$ desde que $f(x_1)f(x_2)<0$ 
-com uma acurácia $x_{ac}$ para um número máximo 
-de iterações definido por {\tt MAXIT}.
+entre os pontos $a$ e $b$ desde que $f(a)f(b)<0$ 
+com uma acurácia $\epsilon$ para um número máximo 
+de iterações $N$. Para calcular a secante no passo
+B3, a condição $f(a)<f(b)$ deve ser satisfeita, caso
+contrário, trocar $a$ por $b$ e $b$ por $a$.
 
 \begin{itemize}
-\item[\bf B1] [Inicializar.] Atribuir $i \leftarrow 1$.
-\item[\bf B2] [Checar número de iterações.] Se $i>${\tt MAXIT}, 
+\item[\bf R1] [Inicializar.] Atribuir $i \leftarrow 1$.
+\item[\bf R2] [Checar número de iterações.] Se $i>${\tt MAXIT}, 
 		ir para B9.
 
-\item[\bf B3] [Achar a secante da reta que passa por $x_1$ e $x_2$.] 
-	Calcular \\\hbox{$x_s = x_1+ f(x_1)\frac{x_2-x_1}{f(x_2)-f(x_1)}$}.
+\item[\bf R3] [Achar a secante da reta que passa por $a$ e $b$.] 
+	Calcular \\\hbox{$m = a+ f(a)\frac{b-a}{f(b)-f(a)}$}.
 
-\item[\bf B4] [Checar os critérios de parada.] Se $f(x_m)=0$
+\item[\bf R4] [Checar os critérios de parada.] Se $f(m)=0$
 	(a raiz foi encontrada)
-	ou \hbox{$|x_2-x_1| < x_{ac}$} (uma aproximação da
+	ou \hbox{$|b-a| < \epsilon$} (uma aproximação da
 	raiz é suficiente), ir para B9.
 
-\item[\bf B5] [Deslocar um dos limites para a secante.]
-	Se $f(x_s)<0$ ir para B6, caso contrário 
+\item[\bf R5] [Deslocar um dos limites para a secante.]
+	Se $f(m)<0$ ir para B6, caso contrário 
 	ir para B7.
 
-\item[\bf B6] [Deslocar $x_1$ para a secante.] Atribuir
-	$x_1\leftarrow x_s$. Ir para o passo B8.
+\item[\bf R6] [Deslocar $a$ para a secante.] Atribuir
+	$a\leftarrow m$. Ir para o passo B8.
 
-\item[\bf B7] [Deslocar $x_2$ para a secante.] Atribuir
-	$x_2\leftarrow x_s$.
+\item[\bf R7] [Deslocar $b$ para a secante.] Atribuir
+	$b\leftarrow m$.
 
-\item[\bf B8] [Avançar.] Incrementar $i$ em $1$ unidade e
+\item[\bf R8] [Avançar.] Incrementar $i$ em $1$ unidade e
 	retornar para B2.
 
-\item[\bf B9] [Término do algoritmo.] Se $i\leq N$, o algoritmo
+\item[\bf R9] [Término do algoritmo.] Se $i\leq N$, o algoritmo
 	terminou com sucesso. Caso contrário, terminou 
 	sem sucesso.\quad\pfbox
 \end{itemize}
 
-\begin{figure}
-	\input zerofal0
-	\caption{Aplicação do método da posição falsa para a função $f(x)= \frac{x}{2} ln(x) -1$.}%
-\label{pic:latex}%
-\end{figure}
+\pagebreak
+\paragraph{Programa R.} A seguir uma possível implementação 
+do Algoritmo~R.
+
+\lstinputlisting[
+	firstline=4,%
+	lastline=25,%
+	label={lst:regula}%
+]{src/regula.c}
 
 \subsection*{Exercícios}
 
-
-\paragraph{1.} Mudar o valor da acurácia (variável {\tt xac}) de $x$ para $0,1$ e
+\paragraph{1.} Mudar o valor da acurácia (variável {\tt eps}) de $x$ para $0,1$ e
 descrever o que ocorre com o valor da raiz estimada para todos 
-os algoritmos. Modifique o valor de {\tt xac} e repita o procedimento.
+os algoritmos. Modifique o valor de {\tt eps} e repita o procedimento.
 
 \paragraph{2.} Para as funções e intervalos a seguir, implemente a localização da raiz
 usando os métodos estudados:
