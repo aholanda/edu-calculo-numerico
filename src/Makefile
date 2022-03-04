@@ -1,7 +1,7 @@
 CFLAGS := -Wall -g -pedantic -ansi -std=c99
 LDFLAGS := -lm
 
-SRC := zerobis.c
+SRC := bisection.c regula.c
 trash += *.o $(BIN)
 
 VPATH = src

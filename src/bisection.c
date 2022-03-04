@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define N 40
-float bisect(float f(float x), float a, float b, float xac) {
+float bisect(float f(float x), float a, float b, float eps) {
 	int i=0;
 	float m, fm;
 	if (f(a)*f(b) >= 0.0) { 
@@ -12,7 +12,7 @@ float bisect(float f(float x), float a, float b, float xac) {
     	while (i<N) {
         	m = (a+b)/2;
         	fm = f(m);
-        	if (fm == 0.0 || fabs(a-b)/2 < xac)
+        	if (fm == 0.0 || fabs(a-b)/2 < eps)
             		return m;
         	if (f(a)*fm > 0.0) a = m;
         	else b = m;

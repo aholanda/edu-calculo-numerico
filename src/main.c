@@ -6,6 +6,6 @@ float f(float x) {
 }
 
 int main(int argc, char**argv) {
-    float r = zerobis(f, 0.0, 4.0, 0.0001);
+    float r = regula(f, 0.0, 4.0, 0.0001);
     printf("f(%f)~=0\n", r);
 }
