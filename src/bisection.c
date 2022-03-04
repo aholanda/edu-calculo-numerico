@@ -5,9 +5,9 @@
 float bisect(float f(float x), float a, float b, float xac) {
 	int i=0;
 	float m, fm;
-	if (f(a)*f(a) >= 0.0) { 
-		printf("f(x1)f(x2)<0=false\n");
-		exit(-1);
+	if (f(a)*f(b) >= 0.0) { 
+		printf("f(a)f(b)<0=false\n");
+		exit(1);
 	}
     	while (i<N) {
         	m = (a+b)/2;
@@ -19,5 +19,5 @@ float bisect(float f(float x), float a, float b, float xac) {
 		i++;
     }
     printf("Limit of %d iterations exceeded.\n", N);
-    exit(-2);
+    exit(1);
 }
