@@ -1,14 +1,9 @@
-#include <math.h>
-#include <stdio.h>
-#include <stdlib.h>
+#include "numcalc.h"
 #define N 40
 float bisect(float f(float x), float a, float b, float eps) {
 	int i=0;
 	float m, fm;
-	if (f(a)*f(b) >= 0.0) { 
-		printf("f(a)f(b)<0=false\n");
-		exit(1);
-	}
+	if (f(a)*f(b) >= 0.0) ERROR("f(a)f(b)<0=false\n");
     	while (i<N) {
         	m = (a+b)/2;
         	fm = f(m);
@@ -18,6 +13,6 @@ float bisect(float f(float x), float a, float b, float eps) {
         	else b = m;
 		i++;
     }
-    printf("Limit of %d iterations exceeded.\n", N);
-    exit(1);
+    ERROR("Limit of %d iterations exceeded.\n", N);
+    return 0.0; /* Never get here. */
 }

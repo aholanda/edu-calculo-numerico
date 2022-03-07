@@ -1,14 +1,9 @@
-#include <math.h>
-#include <stdio.h>
-#include <stdlib.h>
+#include "numcalc.h"
 #define N 40
 float regula(float f(float x), float a, float b, float eps) {
 	int i=0;
 	float d, dx, m, fm, fa, fb, t;
-	if (f(a)*f(b) >= 0.0) { 
-		printf("f(a)f(b)<0=false\n");
-		exit(1);
-	}
+	if (f(a)*f(b) >= 0.0) ERROR("f(a)f(b)<0=false\n");
 	fa = f(a);
 	fb = f(b);
 	if (fb < 0.0) t=b, b=a, a=t, t=fb, fb=fa, fa=t;
@@ -23,6 +18,6 @@ float regula(float f(float x), float a, float b, float eps) {
         	if (fm == 0.0 || fabs(d) < eps)
             		return m;
     }
-    printf("Limit of %d iterations exceeded.\n", N);
-    exit(1);
+    ERROR("Limit of %d iterations exceeded.\n", N);
+    return 0.0; /* Never get here. */
 }
