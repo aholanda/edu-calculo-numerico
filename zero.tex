@@ -51,6 +51,7 @@ de iterações {\tt N}.
 \end{itemize}
 
 \pagebreak
+
 \paragraph{Programa B.} A seguir uma possível implementação 
 do Algoritmo~B.
 
@@ -79,56 +80,52 @@ e $b$ é dada por
 	\ell(x) = a + f(a)\frac{b-a}{f(b)-f(a)}.
 \end{equation}
 
-\paragraph{Algoritmo R.}
-O algoritmo a seguir usa o método da posição falsa 
-({\it regula falsi\/}) para 
-localizar o zero de uma função $f(x)$ 
-entre os pontos $a$ e $b$ desde que $f(a)f(b)<0$ 
+
+\section{Método de Newton-Raphson}
+
+\paragraph{Algoritmo N.}
+O algoritmo a seguir usa 
+o método de Newton-Raphson
+para localizar o zero de uma função $f(x)$ 
+entre os pontos $a$ e $b$
 com uma acurácia $\epsilon$ para um número máximo 
-de iterações $N$. Para calcular a secante no passo
-B3, a condição $f(a)<f(b)$ deve ser satisfeita, caso
-contrário, trocar $a$ por $b$ e $b$ por $a$.
+de iterações $N$. 
 
 \begin{itemize}
-\item[\bf R1] [Inicializar.] Atribuir $i \leftarrow 1$.
-\item[\bf R2] [Checar número de iterações.] Se $i>${\tt MAXIT}, 
+\item[\bf N1] [Inicializar.] Atribuir $i \leftarrow 1$ e 
+	$m\leftarrow\frac{(a+b)}{2}$.
+\item[\bf N2] [Checar número de iterações.] Se $i>${\tt MAXIT}, 
 		ir para B9.
 
-\item[\bf R3] [Achar a secante da reta que passa por $a$ e $b$.] 
-	Calcular \\\hbox{$m = a+ f(a)\frac{b-a}{f(b)-f(a)}$}.
+	\item[\bf N3] [Achar a distância entre a função $f(x)$ e sua derivada no ponto médio $m$.]
+		Calcular $dx\leftarrow\frac{f(m)}{df(m)/dt}$.
 
-\item[\bf R4] [Checar os critérios de parada.] Se $f(m)=0$
-	(a raiz foi encontrada)
-	ou \hbox{$|b-a| < \epsilon$} (uma aproximação da
-	raiz é suficiente), ir para B9.
+	\item[\bf N4] [Atualizar o ponto médio.]
+	Calcular $m\leftarrow m-dx$.
 
-\item[\bf R5] [Deslocar um dos limites para a secante.]
-	Se $f(m)<0$ ir para B6, caso contrário 
-	ir para B7.
+\item[\bf N5] [Checar os critérios de parada.] Se 
+	\hbox{$|dx| < \epsilon$} (uma aproximação da
+	raiz é suficiente), ir para N7.
 
-\item[\bf R6] [Deslocar $a$ para a secante.] Atribuir
-	$a\leftarrow m$. Ir para o passo B8.
+\item[\bf N6] [Avançar.] Incrementar $i$ em $1$ unidade e
+	retornar para N2.
 
-\item[\bf R7] [Deslocar $b$ para a secante.] Atribuir
-	$b\leftarrow m$.
-
-\item[\bf R8] [Avançar.] Incrementar $i$ em $1$ unidade e
-	retornar para B2.
-
-\item[\bf R9] [Término do algoritmo.] Se $i\leq N$, o algoritmo
+\item[\bf N7] [Término do algoritmo.] Se $i\leq N$, o algoritmo
 	terminou com sucesso. Caso contrário, terminou 
 	sem sucesso.\quad\pfbox
 \end{itemize}
 
 \pagebreak
-\paragraph{Programa R.} A seguir uma possível implementação 
-do Algoritmo~R.
 
+\paragraph{Programa N.} A seguir uma possível implementação 
+do Algoritmo~N.
+
+\paragraph{Algoritmo N.}
 \lstinputlisting[
-	firstline=4,%
-	lastline=25,%
-	label={lst:regula}%
-]{src/regula.c}
+	firstline=2,%
+	lastline=20,%
+	label={lst:newton}%
+]{src/newton.c}
 
 \subsection*{Exercícios}
 
@@ -151,3 +148,10 @@ usando os métodos estudados:
 	\item $x^2-7\qquad 1,5\leq x\leq 4$.
 	\end{minipage}
 \end{enumerate}
+
+\paragraph{3.} Usar o método de {\bf Newton-Raphson} para achar
+a raiz da função 
+
+\begin{equation}
+	f(x) = cos(x) - x^2 - \frac{x}{5}\qquad para x>0.
+\end{equation}
