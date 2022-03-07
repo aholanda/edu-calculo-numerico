@@ -1,18 +1,21 @@
 PROJ := numcalc
 LATEX := xelatex
 
-default: $(PROJ).pdf
+$(PROJ).pdf: main.pdf
+	mv main.pdf $(PROJ).pdf
 
-$(PROJ).pdf: $(PROJ).aux $(PLOTS)
-	$(LATEX) $(PROJ)
+main.pdf: main.aux
+	$(LATEX) main
+trash += main.log main.out main.pdf
 
-$(PROJ).aux: $(PROJ).tex $(PLOTS)
-	$(LATEX) $(PROJ) && bibtex $(PROJ) && $(LATEX) $(PROJ)
+main.aux: main.tex
+	$(LATEX) $< && bibtex main && $(LATEX) $<
+trash += main.aux main.bbl main.blg
 
-$(PROJ).tex: src
+main.tex: src
 
 tidy:
-	$(RM) *.aux *.bbl *.blg *.log *.out $(PROJ).pdf $(trash)
+	$(RM) $(PROJ).pdf $(trash)
 
 .PHONY: tidy
 
