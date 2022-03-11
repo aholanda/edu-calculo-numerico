@@ -1,4 +1,10 @@
-\section*{Localização de Zeros de Funções}
+
+\title{Localização de Zeros de Funções}
+\frame{\maketitle}
+
+\frame{\tableofcontents}
+
+\if1=2
 
 O problema da localização de zeros (raízes) 
 de funções contínuas ocorre frequentemente 
@@ -133,22 +139,37 @@ do Algoritmo~R.
 	lastline=20,%
 	label={lst:regula}%
 ]{src/regula.c}
- 
- \pagebreak
-\section{Método de Newton-Raphson}
 
-\paragraph{Algoritmo N.}
-O algoritmo a seguir usa 
-o método de Newton-Raphson
+\fi
+
+\def\sectiontitle{Método de Newton-Raphson}
+\section{\sectiontitle}
+
+\begin{frame}{\sectiontitle}{Definição}
+\begin{center}
+	\begin{tikzpicture}
+	  \draw[->] (-1, 0) -- (4.2, 0) node[right] {$x$};
+	  \draw[->] (0, -1) -- (0, 4.2) node[above] {$y$};
+	    \draw[scale=0.5, domain=-1:4, smooth, variable=\x, blue] 
+			plot ({\x}, {\x*\x-2*\x});
+	    \draw[scale=0.5, domain=-2:3, smooth, variable=\x, green] 
+			plot ({\x}, {2*\x-2});
+	\end{tikzpicture}
+\end{center}
+\end{frame}
+
+\begin{frame}{\sectiontitle}{Algoritmo N}\small
+
+O algoritmo 
 para localizar o zero de uma função $f(x)$ 
 entre os pontos $a$ e $b$
 com uma acurácia $\epsilon$ para um número máximo 
 de iterações $N$. 
 
-\begin{itemize}
+	\begin{itemize}[<+-| alert@+>]
 \item[\bf N1] [Inicializar.] Atribuir $i \leftarrow 1$ e 
 	$m\leftarrow\frac{(a+b)}{2}$.
-\item[\bf N2] [Checar número de iterações.] Se $i>${\tt MAXIT}, 
+\item[\bf N2] [Checar número de iterações.] Se $i>${\tt N}, 
 		ir para N9.
 
 	\item[\bf N3] [Achar a distância entre a função $f(x)$ e sua derivada no ponto médio $m$.]
@@ -169,43 +190,16 @@ de iterações $N$.
 	sem sucesso.\quad\pfbox
 \end{itemize}
 
-\pagebreak
+\end{frame}
 
-\paragraph{Programa N.} A seguir uma possível implementação 
-do Algoritmo~N.
 
-\paragraph{Algoritmo N.}
+\begin{frame}[fragile]{\sectiontitle}{Programa N.} 
+Uma possível implementação do Algoritmo~N:
+
 \lstinputlisting[
 	firstline=2,%
 	lastline=20,%
 	label={lst:newton}%
 ]{src/newton.c}
 
-\subsection*{Exercícios}
-
-\paragraph{1.} Mudar o valor da acurácia (variável {\tt eps}) de $x$ para $0,1$ e
-descrever o que ocorre com o valor da raiz estimada para todos 
-os algoritmos. Modifique o valor de {\tt eps} e repita o procedimento.
-
-\paragraph{2.} Para as funções e intervalos a seguir, implemente a localização da raiz
-usando os métodos estudados:
-
-\begin{enumerate}[a)]
-	\begin{minipage}{0.5\textwidth}
-	\item $exp(x) -2x -5\qquad 1\leq x\leq 3$;
-	\item $cos(x)-x\qquad 0\leq x\leq\frac{\pi}{2}$; 
-	\item $x^3-5\qquad 1\leq x \leq 2,5$;
-	\end{minipage}
-	\begin{minipage}{0.5\textwidth}
-	\item $xln(x)-x-1\qquad 2\leq x\leq 5 $;
-	\item $xtan(x)-\frac{1}{x^3}\qquad 2\leq x\leq 4$;
-	\item $x^2-7\qquad 1,5\leq x\leq 4$.
-	\end{minipage}
-\end{enumerate}
-
-\paragraph{3.} Usar o método de {\bf Newton-Raphson} para achar
-a raiz da função 
-
-\begin{equation}
-	f(x) = cos(x) - x^2 - \frac{x}{5}\qquad para x>0.
-\end{equation}
+\end{frame}

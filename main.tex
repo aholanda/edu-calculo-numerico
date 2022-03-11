@@ -1,25 +1,22 @@
-\documentclass{article}
+\documentclass{beamer}
 
 \usepackage{enumerate}
 \usepackage{fontspec}
 \usepackage{graphicx}
-\usepackage[
-	colorlinks=true,%
-	anchorcolor=blue,%
-	citecolor=blue,%
-	linkcolor=blue,%
-	urlcolor=blue%
-]{hyperref}
-\usepackage{polyglossia}
-\setdefaultlanguage{brazil}
 \usepackage{listings}
 \lstset{
 	language=C,%
+	basicstyle={\footnotesize},%
+	identifierstyle={},%
+	keywordstyle={\small\color{brown}},%
+	stringstyle={\ttfamily},
 	numbers=left,%
 	numberstyle={\color{gray}\scriptsize},%
 	numbersep=5pt,%
 	showspaces=false
 }
+
+\usepackage{tikz}
 \usepackage{xcolor}
 
 \def\pfbox
@@ -31,10 +28,9 @@
 \title{Noções de Cálculo Numérico}
 \author{Adriano J. Holanda}
 \date{2022-03-08}
-\maketitle
 
 \input zero
 
-\bibliography{refs}
-\bibliographystyle{plain}
+%\bibliography{refs}
+%\bibliographystyle{plain}
 \end{document}
