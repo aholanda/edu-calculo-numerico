@@ -9,7 +9,8 @@ float newton(float fd(float x, float *f, float *df),
 		fd(m, &f,&df);
 		dx=f/df;
 		m -= dx;
-        	if ((a-m)*(m-b) < 0.0) ERROR("Jumped out of brackets.");
+        	if ((a-m)*(m-b) < 0.0) 
+			ERROR("Jumped out of brackets.");
 		if (fabs(dx) < eps) return m;
 		i++;
     }
