@@ -2,33 +2,36 @@
 \title{Localização de Zeros de Funções}
 \frame{\maketitle}
 
-\frame{\tableofcontents}
+% \frame{\tableofcontents}
 
-\if1=2
-
-O problema da localização de zeros (raízes) 
+\only<article>{O problema da localização de zeros (raízes) 
 de funções contínuas ocorre frequentemente 
 em ciência e engenharia~\cite{hamming}.
 Iremos mostrar alguns métodos simples 
-e fáceis de entender.
+e fáceis de entender.}
 
-\subsection*{Método da bissecção}
+\def\sectiontitle{Método da bissecção}
+\section{\sectiontitle}
 
+
+\begin{frame}{\sectiontitle}
 O método da bissecção usa o fato do zero de uma 
 função contínua $f(x)$ se localizar entre dois 
 pontos $a$ e $b$ se $f(a)f(b)<0$ 
-({\it teorema do valor intermediário\/})~\cite{numrec}.
+({\it teorema do valor intermediário\/})~\cite{Press1992}.
+\end{frame}
 
-\paragraph{Algoritmo B.}
+
+\begin{frame}{\sectiontitle}{Algoritmo B.}\footnotesize
 O algoritmo a seguir usa o método da bissecção para 
 localizar o zero de uma função $f(x)$ 
 entre os pontos $a$ e $b$ desde que $f(a)f(b)<0$ 
 com uma acurácia $\epsilon$ e um número máximo 
-de iterações {\tt N}.
+de iterações {\tt MAXIT}.
 
-\begin{itemize}
+\begin{itemize}[<+-| alert@+>]
 \item[\bf B1] [Inicializar.] Atribuir $i \leftarrow 1$.
-\item[\bf B2] [Checar número de iterações.] Se $i>${\tt N}, 
+\item[\bf B2] [Checar número de iterações.] Se $i>${\tt MAXIT}, 
 		ir para B9.
 
 	\item[\bf B3] [Achar o ponto médio.] Calcular $m = \frac{a+b}{2}$.
@@ -51,23 +54,30 @@ de iterações {\tt N}.
 \item[\bf B8] [Avançar.] Incrementar $i$ em $1$ unidade e
 	retornar para B2.
 
-\item[\bf B9] [Término do algoritmo.] Se $i\leq N$, o algoritmo
+\item[\bf B9] [Término do algoritmo.] Se $i\leq MAXIT$, o algoritmo
 	terminou com sucesso. Caso contrário, terminou 
 	sem sucesso.\quad\pfbox
 \end{itemize}
+\end{frame}
 
 
-\paragraph{Programa B.} A seguir uma possível implementação 
-do Algoritmo~B.
+\begin{frame}[fragile]{\sectiontitle}{Programa B.} 
+
+Uma possível implementação do Algoritmo~B.
 
 \lstinputlisting[
-	firstline=2,%
+	firstline=4,%
 	lastline=20,%
 	label={lst:bisection}%
-]{src/bisection.c}
+]{numcalc/zero/bisection.py}
 
-\pagebreak
-\subsection*{Método da posição falsa}
+\end{frame}
+
+
+\def\sectiontitle{Método da posição falsa}
+\section{\sectiontitle}
+
+\begin{frame}{\sectiontitle}
 
 No método da posição falsa ({\it regula falsi\/}), 
 são tomados dois pontos $\{a,b\}$ em $x$ que satisfaçam 
@@ -85,23 +95,25 @@ e $b$ é dada por
 \begin{equation}
 	a + f(a)\frac{b-a}{f(b)-f(a)}.
 \end{equation}
- 
-\paragraph{Algoritmo R.}
+
+\end{frame}
+
+\begin{frame}{\sectiontitle}{Algoritmo R.}\footnotesize
 O algoritmo a seguir usa o método da posição falsa 
 ({\it regula falsi\/}) para 
 localizar o zero de uma função $f(x)$ 
 entre os pontos $a$ e $b$ desde que $f(a)f(b)<0$ 
  com uma acurácia $\epsilon$ para um número máximo 
-de iterações $N$. Para calcular a secante no passo
+de iterações $MAXIT$. Para calcular a secante no passo
 B3, a condição $f(a)<f(b)$ deve ser satisfeita, caso
 contrário, trocar $a$ por $b$ e $b$ por $a$.
  
- \begin{itemize}
+ \begin{itemize}[<+-| alert@+>]
 
 	 \item[\bf R1] [Inicializar.] Atribuir $i \leftarrow 1$.
 
 
-	 \item[\bf R2] [Checar número de iterações.] Se $i>${\tt N}, 
+	 \item[\bf R2] [Checar número de iterações.] Se $i>${\tt MAXIT}, 
  		ir para R9.
 
 	\item[\bf R3] [Achar a secante da reta que passa por $a$ e $b$.] 
@@ -117,59 +129,50 @@ contrário, trocar $a$ por $b$ e $b$ por $a$.
 		ir para R7.
 
 	\item[\bf R6] [Deslocar $a$ para a secante.] Atribuir
-		$a\leftarrow m$. Ir para o passo B8.
+		$a\leftarrow m$. Ir para o passo R8.
 
 	\item[\bf R7] [Deslocar $b$ para a secante.] Atribuir
 		$b\leftarrow m$.
  
 	\item[\bf R8] [Avançar.] Incrementar $i$ em $1$ unidade e
-		retornar para B2.
+		retornar para R2.
  
-	\item[\bf R9] [Término do algoritmo.] Se $i\leq N$, o algoritmo
+	\item[\bf R9] [Término do algoritmo.] Se $i\leq MAXIT$, o algoritmo
  		terminou com sucesso. Caso contrário, terminou 
 	 	sem sucesso.\quad\pfbox
  \end{itemize}
 
- \pagebreak
- \paragraph{Programa R.} A seguir uma possível implementação 
-do Algoritmo~R.
+\end{frame}
+
+
+\begin{frame}[fragile]{\sectiontitle}{Programa R.} 
+ Uma possível implementação do Algoritmo~R:
  
  \lstinputlisting[
 	firstline=2,%
-	lastline=20,%
+	lastline=24,%
+	basicstyle={\scriptsize},%
 	label={lst:regula}%
-]{src/regula.c}
+]{numcalc/zero/regula.py}
+\end{frame}
 
-\fi
+\ifnum1=2
 
 \def\sectiontitle{Método de Newton-Raphson}
 \section{\sectiontitle}
 
-\begin{frame}{\sectiontitle}{Definição}
-\begin{center}
-	\begin{tikzpicture}
-	  \draw[->] (-1, 0) -- (4.2, 0) node[right] {$x$};
-	  \draw[->] (0, -1) -- (0, 4.2) node[above] {$y$};
-	    \draw[scale=0.5, domain=-1:4, smooth, variable=\x, blue] 
-			plot ({\x}, {\x*\x-2*\x});
-	    \draw[scale=0.5, domain=-2:3, smooth, variable=\x, green] 
-			plot ({\x}, {2*\x-2});
-	\end{tikzpicture}
-\end{center}
-\end{frame}
-
-\begin{frame}{\sectiontitle}{Algoritmo N}\small
+\begin{frame}{\sectiontitle}{Algoritmo N}\footnotesize
 
 O algoritmo 
 para localizar o zero de uma função $f(x)$ 
 entre os pontos $a$ e $b$
 com uma acurácia $\epsilon$ para um número máximo 
-de iterações $N$. 
+de iterações $MAXIT$. 
 
-	\begin{itemize}[<+-| alert@+>]
+\begin{itemize}[<+-| alert@+>]
 \item[\bf N1] [Inicializar.] Atribuir $i \leftarrow 1$ e 
 	$m\leftarrow\frac{(a+b)}{2}$.
-\item[\bf N2] [Checar número de iterações.] Se $i>${\tt N}, 
+\item[\bf N2] [Checar número de iterações.] Se $i>${\tt MAXIT}, 
 		ir para N9.
 
 	\item[\bf N3] [Achar a distância entre a função $f(x)$ e sua derivada no ponto médio $m$.]
@@ -197,9 +200,22 @@ de iterações $N$.
 Uma possível implementação do Algoritmo~N:
 
 \lstinputlisting[
-	firstline=2,%
-	lastline=20,%
+	firstline=3,%
+	lastline=17,%
 	label={lst:newton}%
-]{src/newton.c}
+]{numcalc/zero/newton.py}
 
+\end{frame}
+
+\fi
+
+
+\begin{frame}{Referência}
+
+\begin{thebibliography}{Press1992}
+	\bibitem[Press1992]{Press1992}
+	William H.\ Press {\it et al.}
+	\newblock {Numerical Recipes in C (2nd Ed.): The Art of Scientific Computing}.
+	\newblock Cambridge University Press, 1992.
+\end{thebibliography}
 \end{frame}
