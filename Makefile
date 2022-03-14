@@ -1,17 +1,14 @@
 PROJ := numcalc
 LATEX := xelatex
 
-main.pdf: main.aux
+main.pdf: main.tex $(wildcard *.tex) numcalc
 	$(LATEX) main && $(LATEX) main
-trash += main.log main.out main.pdf
+trash += main.aux main.log main.nav main.out \
+	 main.pdf main.snm main.toc main.vrb
 
-main.aux: $(wildcard *.tex)
-	$(LATEX) main && bibtex main
-trash += main.aux main.bbl main.blg
+main.tex: 
 
-main.tex: src
-
-tidy:
+clean:
 	$(RM) $(PROJ).pdf $(trash)
 
 .PHONY: tidy
@@ -19,5 +16,3 @@ tidy:
 $(PROJ).pdf: main.pdf
 	mv main.pdf $(PROJ).pdf
 
-# Code
-include src/Makefile
