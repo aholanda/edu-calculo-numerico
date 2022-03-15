@@ -2,7 +2,7 @@
 
 Material didático introdutório contendo alguns métodos numéricos:
 
-- [Código em Python3](numcalc) das métodos numéricos estudados.
+- [Código em Python3](numcalc) dos métodos numéricos estudados.
 
 ## Slides
 
