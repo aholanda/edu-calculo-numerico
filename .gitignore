@@ -10,6 +10,9 @@ main.toc
 main.vrb
 main.pdf
 
+# Python
+__pycache__
+
 # misc
 *~
 *.swp
