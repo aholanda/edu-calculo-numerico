@@ -4,10 +4,13 @@ Material didático introdutório contendo alguns métodos numéricos:
 
 - [Código em Python3](numcalc) dos métodos numéricos estudados.
 
-## Slides
+## Material didático 
 
-* Localização de zeros de funçoes
+### Localização de zeros de funções
+
+* Slides
 	* [Método da bisecção e posição falsa](https://drive.google.com/file/d/1RP35YrcT4St21zLcbtAWRLXTZU10UJQb/view?usp=sharing).
+* [Exercícios](https://drive.google.com/file/d/10U8yVIiTSlo4PAlArc8VOdkhEbAqyWis/view?usp=sharing).
 
 ## Ferramentas
 
