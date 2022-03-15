@@ -10,10 +10,6 @@ main.toc
 main.vrb
 main.pdf
 
-# C
-*.o
-numcalc
-
 # misc
 *~
 *.swp
