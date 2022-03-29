@@ -6,13 +6,13 @@ Material didático introdutório contendo alguns métodos numéricos:
 
 ## Material didático 
 
-### Localização de zeros de funções
+### Localização de zero de funções contínuas de uma variável
 
 * Slides
 	* [Método da bisecção e posição falsa](https://drive.google.com/file/d/1RP35YrcT4St21zLcbtAWRLXTZU10UJQb/view?usp=sharing);
 * Notebooks
     * [Método de
-      Newton-Raphson](https://github.com/prof-holanda/calculo-numerico/blob/main/notebooks/zero.ipynb);
+      Newton-Raphson e secante](https://github.com/prof-holanda/calculo-numerico/blob/main/notebooks/zero.ipynb);
 * [Exercícios](https://drive.google.com/file/d/10U8yVIiTSlo4PAlArc8VOdkhEbAqyWis/view?usp=sharing).
 
 ## Ferramentas
