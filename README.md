@@ -9,11 +9,17 @@ Material didático introdutório contendo alguns métodos numéricos:
 ### Localização de zeros de funções
 
 * Slides
-	* [Método da bisecção e posição falsa](https://drive.google.com/file/d/1RP35YrcT4St21zLcbtAWRLXTZU10UJQb/view?usp=sharing).
+	* [Método da bisecção e posição falsa](https://drive.google.com/file/d/1RP35YrcT4St21zLcbtAWRLXTZU10UJQb/view?usp=sharing);
+* Notebooks
+    * [Método de
+      Newton-Raphson](https://github.com/prof-holanda/calculo-numerico/blob/main/notebooks/zero.ipynb);
 * [Exercícios](https://drive.google.com/file/d/10U8yVIiTSlo4PAlArc8VOdkhEbAqyWis/view?usp=sharing).
 
 ## Ferramentas
 
+
+- [JupyterLab](https://jupyter.org/try-jupyter/lab/): ambiente para a
+  geração e execução de *notebooks*.
 - [Codabrainy - Python compiler](https://www.codabrainy.com/en/python-compiler/): ambiente web para execução 
 de programas em Python com suporte ao pacote matplotlib.
 - [GeoGebra](https://www.geogebra.org/graphing) - calculadora
