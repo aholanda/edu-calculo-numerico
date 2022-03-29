@@ -37,6 +37,8 @@ Cambridge University Press}, 1992.
 - Décio Sperandio, João T. Mendes, Luiz H. Monken e Silva.
 Cálculo Numérico, 2a. edição. Editora Pearson, 2014. 
 [Biblioteca Virtual](https://plataforma.bvirtual.com.br/Acervo/Publicacao/22444)
+- [Cálculo
+  Numérico](https://www.ufrgs.br/reamat/CalculoNumerico/livro-py/main.html), um livro colaborativo, versão Python.
 
 ---
 [Adriano J. Holanda](https://ajholanda.github.io)
