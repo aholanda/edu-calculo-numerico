@@ -1,0 +1,8 @@
+* FAFRAM 1o. semestre 2022
+** Correção de avaliações
+   :LOGBOOK:
+   CLOCK: [2022-04-18 seg 08:56]--[2022-04-18 seg 09:40] =>  0:44
+   Foram corrigidas testes e provas do 1o. bimestre
+   para os 3 alunos da disciplina.
+   :END:
+   
