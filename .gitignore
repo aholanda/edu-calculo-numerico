@@ -1,14 +1,14 @@
 # LaTeX
-main.aux
-main.bbl
-main.blg
-main.log
-main.out
-main.nav
-main.snm
-main.toc
-main.vrb
-main.pdf
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.nav
+*.snm
+*.toc
+*.vrb
+*.pdf
 
 # Python
 __pycache__
